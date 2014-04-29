@@ -16,6 +16,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
@@ -28,6 +29,8 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QTableWidget *tableWidget;
+    QPushButton *pushButton_4;
+    QPushButton *pushButton_5;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -49,7 +52,13 @@ public:
         QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(80, 150, 421, 261));
+        tableWidget->setGeometry(QRect(30, 170, 551, 261));
+        pushButton_4 = new QPushButton(centralWidget);
+        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        pushButton_4->setGeometry(QRect(50, 40, 75, 23));
+        pushButton_5 = new QPushButton(centralWidget);
+        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
+        pushButton_5->setGeometry(QRect(310, 60, 75, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -76,6 +85,8 @@ public:
         ___qtablewidgetitem1->setText(QApplication::translate("MainWindow", "NAME", 0));
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
         ___qtablewidgetitem2->setText(QApplication::translate("MainWindow", "AUTHOR", 0));
+        pushButton_4->setText(QApplication::translate("MainWindow", "Add from File", 0));
+        pushButton_5->setText(QApplication::translate("MainWindow", "Display", 0));
     } // retranslateUi
 
 };
