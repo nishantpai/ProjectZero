@@ -27,18 +27,20 @@ class Books
         QString bookName,authName,qty;
 };
 
+QString line;
+
 void MainWindow::on_pushButton_4_clicked()
 {
-    QFile inputFile("/Resources/Database.txt");
+    QFile inputFile("Resources/Database.txt");
     if (inputFile.open(QIODevice::ReadOnly | QIODevice::Text))
           {
              QTextStream in(&inputFile);
              while ( !in.atEnd() )
              {
-                QString line = in.readLine();
-               // this->ui->plain->appendPlainText(line+"\n");
-
+                line.append (in.readLine() );
              }
+
+             ui->label->setText( "FILE READ!!!" );
 
              inputFile.close();
           }
@@ -52,6 +54,9 @@ void MainWindow::on_pushButton_4_clicked()
 
 void MainWindow::on_pushButton_5_clicked()
 {
+
+    ui->label->setText(line);
+    /*
     QFile OutFile("/Resources/Database.txt");
     QTableWidgetItem* test = new QTableWidgetItem;
         test->setText("LOLOL");
@@ -72,6 +77,7 @@ void MainWindow::on_pushButton_5_clicked()
 
 
           OutFile.close();
+          */
 
 
 

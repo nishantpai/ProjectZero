@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -31,6 +32,7 @@ public:
     QTableWidget *tableWidget;
     QPushButton *pushButton_4;
     QPushButton *pushButton_5;
+    QLabel *label;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -59,6 +61,9 @@ public:
         pushButton_5 = new QPushButton(centralWidget);
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
         pushButton_5->setGeometry(QRect(310, 60, 75, 23));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(120, 120, 331, 31));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -87,6 +92,7 @@ public:
         ___qtablewidgetitem2->setText(QApplication::translate("MainWindow", "AUTHOR", 0));
         pushButton_4->setText(QApplication::translate("MainWindow", "Add from File", 0));
         pushButton_5->setText(QApplication::translate("MainWindow", "Display", 0));
+        label->setText(QApplication::translate("MainWindow", "TextLabel", 0));
     } // retranslateUi
 
 };
