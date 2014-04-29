@@ -6,6 +6,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+
+    ui->tableWidget->setColumnCount(3);
+    ui->tableWidget->setRowCount(3);
 }
 
 MainWindow::~MainWindow()

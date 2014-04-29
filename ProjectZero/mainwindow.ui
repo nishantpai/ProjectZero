@@ -6,52 +6,38 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>572</width>
+    <height>454</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>30</y>
-      <width>75</width>
-      <height>23</height>
+      <y>100</y>
+      <width>421</width>
+      <height>261</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Raj</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>80</y>
-      <width>91</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>NIshant</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>140</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Darshit</string>
-    </property>
+    <column>
+     <property name="text">
+      <string>#</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>NAME</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>AUTHOR</string>
+     </property>
+    </column>
    </widget>
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
@@ -72,7 +58,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>572</width>
      <height>21</height>
     </rect>
    </property>
