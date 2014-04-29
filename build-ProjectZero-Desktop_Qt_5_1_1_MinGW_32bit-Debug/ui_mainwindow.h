@@ -13,8 +13,10 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -29,10 +31,19 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QTableWidget *tableWidget;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_5;
+    QPushButton *addFromFileButton;
+    QPushButton *displayLibraryButton;
+    QTableWidget *displayBooks;
+    QWidget *layoutWidget;
+    QFormLayout *formLayout;
     QLabel *label;
+    QLineEdit *nameEdit;
+    QLabel *label_3;
+    QLineEdit *authorEdit;
+    QLabel *label_4;
+    QLineEdit *quantityEdit;
+    QPushButton *addManuallyButton;
+    QLabel *label_2;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -44,26 +55,71 @@ public:
         MainWindow->resize(651, 490);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        tableWidget = new QTableWidget(centralWidget);
-        if (tableWidget->columnCount() < 3)
-            tableWidget->setColumnCount(3);
+        addFromFileButton = new QPushButton(centralWidget);
+        addFromFileButton->setObjectName(QStringLiteral("addFromFileButton"));
+        addFromFileButton->setGeometry(QRect(50, 40, 81, 23));
+        displayLibraryButton = new QPushButton(centralWidget);
+        displayLibraryButton->setObjectName(QStringLiteral("displayLibraryButton"));
+        displayLibraryButton->setGeometry(QRect(160, 40, 91, 23));
+        displayBooks = new QTableWidget(centralWidget);
+        if (displayBooks->columnCount() < 3)
+            displayBooks->setColumnCount(3);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        displayBooks->setHorizontalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        displayBooks->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
-        tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(30, 170, 551, 261));
-        pushButton_4 = new QPushButton(centralWidget);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        pushButton_4->setGeometry(QRect(50, 40, 75, 23));
-        pushButton_5 = new QPushButton(centralWidget);
-        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
-        pushButton_5->setGeometry(QRect(310, 60, 75, 23));
-        label = new QLabel(centralWidget);
+        displayBooks->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        displayBooks->setObjectName(QStringLiteral("displayBooks"));
+        displayBooks->setGeometry(QRect(30, 80, 341, 311));
+        layoutWidget = new QWidget(centralWidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(410, 150, 190, 128));
+        formLayout = new QFormLayout(layoutWidget);
+        formLayout->setSpacing(6);
+        formLayout->setContentsMargins(11, 11, 11, 11);
+        formLayout->setObjectName(QStringLiteral("formLayout"));
+        formLayout->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(120, 120, 331, 31));
+
+        formLayout->setWidget(2, QFormLayout::LabelRole, label);
+
+        nameEdit = new QLineEdit(layoutWidget);
+        nameEdit->setObjectName(QStringLiteral("nameEdit"));
+
+        formLayout->setWidget(2, QFormLayout::FieldRole, nameEdit);
+
+        label_3 = new QLabel(layoutWidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        formLayout->setWidget(3, QFormLayout::LabelRole, label_3);
+
+        authorEdit = new QLineEdit(layoutWidget);
+        authorEdit->setObjectName(QStringLiteral("authorEdit"));
+
+        formLayout->setWidget(3, QFormLayout::FieldRole, authorEdit);
+
+        label_4 = new QLabel(layoutWidget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+
+        formLayout->setWidget(4, QFormLayout::LabelRole, label_4);
+
+        quantityEdit = new QLineEdit(layoutWidget);
+        quantityEdit->setObjectName(QStringLiteral("quantityEdit"));
+
+        formLayout->setWidget(4, QFormLayout::FieldRole, quantityEdit);
+
+        addManuallyButton = new QPushButton(layoutWidget);
+        addManuallyButton->setObjectName(QStringLiteral("addManuallyButton"));
+
+        formLayout->setWidget(5, QFormLayout::SpanningRole, addManuallyButton);
+
+        label_2 = new QLabel(layoutWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+
+        formLayout->setWidget(1, QFormLayout::SpanningRole, label_2);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -84,15 +140,19 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "#", 0));
-        QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("MainWindow", "NAME", 0));
-        QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("MainWindow", "AUTHOR", 0));
-        pushButton_4->setText(QApplication::translate("MainWindow", "Add from File", 0));
-        pushButton_5->setText(QApplication::translate("MainWindow", "Display", 0));
-        label->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        addFromFileButton->setText(QApplication::translate("MainWindow", "Add From File", 0));
+        displayLibraryButton->setText(QApplication::translate("MainWindow", "Display Library", 0));
+        QTableWidgetItem *___qtablewidgetitem = displayBooks->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "NAME", 0));
+        QTableWidgetItem *___qtablewidgetitem1 = displayBooks->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QApplication::translate("MainWindow", "AUTHOR", 0));
+        QTableWidgetItem *___qtablewidgetitem2 = displayBooks->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QApplication::translate("MainWindow", "QUANTITY", 0));
+        label->setText(QApplication::translate("MainWindow", "Name:", 0));
+        label_3->setText(QApplication::translate("MainWindow", "Author:", 0));
+        label_4->setText(QApplication::translate("MainWindow", "Quantity: ", 0));
+        addManuallyButton->setText(QApplication::translate("MainWindow", "Add Manually", 0));
+        label_2->setText(QApplication::translate("MainWindow", "ADD BOOKS MANUALLY:", 0));
     } // retranslateUi
 
 };

@@ -20,7 +20,13 @@ public:
 
         void on_pushButton_5_clicked();
 
-    private:
+        void on_addFromFileButton_clicked();
+
+        void on_displayLibraryButton_clicked();
+
+        void on_addManuallyButton_clicked();
+
+private:
     Ui::MainWindow *ui;
 };
 

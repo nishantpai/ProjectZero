@@ -14,20 +14,41 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QPushButton" name="addFromFileButton">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>40</y>
+      <width>81</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add From File</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="displayLibraryButton">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>40</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Display Library</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="displayBooks">
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>170</y>
-      <width>551</width>
-      <height>261</height>
+      <y>80</y>
+      <width>341</width>
+      <height>311</height>
      </rect>
     </property>
-    <column>
-     <property name="text">
-      <string>#</string>
-     </property>
-    </column>
     <column>
      <property name="text">
       <string>NAME</string>
@@ -38,45 +59,67 @@
       <string>AUTHOR</string>
      </property>
     </column>
+    <column>
+     <property name="text">
+      <string>QUANTITY</string>
+     </property>
+    </column>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>40</y>
-      <width>75</width>
-      <height>23</height>
+      <x>410</x>
+      <y>150</y>
+      <width>190</width>
+      <height>128</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Add from File</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_5">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>60</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Display</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>120</y>
-      <width>331</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="2" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Name:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="nameEdit"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Author:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="authorEdit"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Quantity: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="quantityEdit"/>
+     </item>
+     <item row="5" column="0" colspan="2">
+      <widget class="QPushButton" name="addManuallyButton">
+       <property name="text">
+        <string>Add Manually</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="2">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>ADD BOOKS MANUALLY:</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

@@ -1,9 +1,10 @@
 #include "mainwindow.h"
+#include "Library.h"
 #include "ui_mainwindow.h"
-#include "QFile"
-#include "QTextStream"
+
 #include<iostream>
 using namespace std;
+
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -11,10 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-
-    ui->tableWidget->setColumnCount(3);
-    ui->tableWidget->setRowCount(3);
+    ui->displayBooks->setColumnCount(5);
+    ui->displayBooks->setRowCount(5);
 
 }
 
@@ -22,63 +21,58 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-class Books
+
+
+Library myLibrary;
+
+
+void MainWindow::on_addFromFileButton_clicked()
 {
-        QString bookName,authName,qty;
-};
-
-QString line;
-
-void MainWindow::on_pushButton_4_clicked()
-{
-    QFile inputFile("Resources/Database.txt");
-    if (inputFile.open(QIODevice::ReadOnly | QIODevice::Text))
-          {
-             QTextStream in(&inputFile);
-             while ( !in.atEnd() )
-             {
-                line.append (in.readLine() );
-             }
-
-             ui->label->setText( "FILE READ!!!" );
-
-             inputFile.close();
-          }
-          else
-          {
-              cout<<"File Open Error";
-          }
-
-
+    myLibrary.addFromFile("Resources/Database.txt");
 }
 
-void MainWindow::on_pushButton_5_clicked()
+void MainWindow::on_addManuallyButton_clicked()
+{
+    Book* newBook = new Book;
+    newBook->name = ui->nameEdit->text();
+    newBook->author = ui->authorEdit->text();
+    newBook->quantity = ui->quantityEdit->text().toInt();
+
+    myLibrary.addBookManually(newBook);
+}
+
+void MainWindow::on_displayLibraryButton_clicked()
 {
 
-    ui->label->setText(line);
-    /*
-    QFile OutFile("/Resources/Database.txt");
-    QTableWidgetItem* test = new QTableWidgetItem;
-        test->setText("LOLOL");
+    Book* currentBook = myLibrary.header;
+    ui->displayBooks->setRowCount(5+myLibrary.bookCount);
 
-        ui->tableWidget->setItem(2, 1, test );
-    //this->ui->tableWidget->setItem(2,1,);
-        if ( OutFile.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
+    for(int i=0; i< myLibrary.bookCount; i++ )
+    {
+        for( int j=0; j< myLibrary.attributes ; j++  )
         {
 
-            QTextStream out( &OutFile );
-          //  this->ui->tableWidget->setItem(2,1,QString num="1");
-           OutFile.close();
-         }
-        else
-        {
-            cout<<"File open Error";
+            QTableWidgetItem* currentCell;
+            currentCell = new QTableWidgetItem;
+
+            switch(j)
+            {
+            case 0:
+                currentCell->setText( currentBook->name );
+                break;
+            case 1:
+                currentCell->setText( currentBook->author );
+                break;
+            case 2:
+                currentCell->setText( QString::number(currentBook->quantity ) );
+                break;
+            }
+
+            ui->displayBooks->setItem(i, j, currentCell );
         }
 
-
-          OutFile.close();
-          */
-
-
-
+        currentBook = currentBook->next;
+    }
 }
+
+
