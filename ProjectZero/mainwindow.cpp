@@ -3,6 +3,7 @@
 #include "QFile"
 #include "QTextStream"
 #include<iostream>
+#include "fstream"
 using namespace std;
 
 
@@ -31,7 +32,7 @@ QString line;
 
 void MainWindow::on_pushButton_4_clicked()
 {
-    QFile inputFile("Resources/Database.txt");
+   /* QFile inputFile("Resources/Database.txt");
     if (inputFile.open(QIODevice::ReadOnly | QIODevice::Text))
           {
              QTextStream in(&inputFile);
@@ -48,6 +49,9 @@ void MainWindow::on_pushButton_4_clicked()
           {
               cout<<"File Open Error";
           }
+*/
+    ofstream fout("library.txt");
+    fout<<"nishant";
 
 
 }
@@ -78,7 +82,15 @@ void MainWindow::on_pushButton_5_clicked()
 
           OutFile.close();
           */
-
+    ifstream fin("library.txt");
+    fin.seekg(0);
+    char name[10];
+ QString check;
+ fin.get(name,10);
+ this->ui->label->setText(name);
+    fin.close();
 
 
 }
+
+

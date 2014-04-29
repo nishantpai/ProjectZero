@@ -20,7 +20,9 @@ public:
 
         void on_pushButton_5_clicked();
 
-    private:
+
+
+private:
     Ui::MainWindow *ui;
 };
 
