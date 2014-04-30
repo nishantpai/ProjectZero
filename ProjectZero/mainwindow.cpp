@@ -2,8 +2,9 @@
 #include "ui_mainwindow.h"
 #include "QFile"
 #include "QTextStream"
-#include<iostream>
+#include <iostream>
 #include "fstream"
+#include <QFileDialog>
 using namespace std;
 
 
@@ -28,11 +29,13 @@ class Books
         QString bookName,authName,qty;
 };
 
-QString line;
+QString line,path;
 
 void MainWindow::on_pushButton_4_clicked()
 {
-   /* QFile inputFile("Resources/Database.txt");
+     path= QFileDialog::getOpenFileName(this, tr("Open File"),"", tr("*.txt"));
+  //  ui->label->setText(path);
+   QFile inputFile(path);
     if (inputFile.open(QIODevice::ReadOnly | QIODevice::Text))
           {
              QTextStream in(&inputFile);
@@ -49,9 +52,9 @@ void MainWindow::on_pushButton_4_clicked()
           {
               cout<<"File Open Error";
           }
-*/
-    ofstream fout("library.txt");
-    fout<<"nishant";
+
+//    ofstream fout("library.txt");
+  //  fout<<"nishant";
 
 
 }
@@ -59,18 +62,19 @@ void MainWindow::on_pushButton_4_clicked()
 void MainWindow::on_pushButton_5_clicked()
 {
 
-    ui->label->setText(line);
-    /*
-    QFile OutFile("/Resources/Database.txt");
-    QTableWidgetItem* test = new QTableWidgetItem;
-        test->setText("LOLOL");
 
-        ui->tableWidget->setItem(2, 1, test );
+    QFile OutFile(path);
+
     //this->ui->tableWidget->setItem(2,1,);
-        if ( OutFile.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
+        if ( OutFile.open(QIODevice::ReadOnly | QIODevice::Text | QIODevice::Append))
         {
 
-            QTextStream out( &OutFile );
+           // QTextStream out( &OutFile );
+            QTableWidgetItem* test = new QTableWidgetItem;
+             QTextStream out(&OutFile);
+                test->setText(out.read(8));
+
+                ui->tableWidget->setItem(1, 1, test );
           //  this->ui->tableWidget->setItem(2,1,QString num="1");
            OutFile.close();
          }
@@ -81,14 +85,14 @@ void MainWindow::on_pushButton_5_clicked()
 
 
           OutFile.close();
-          */
-    ifstream fin("library.txt");
-    fin.seekg(0);
-    char name[10];
- QString check;
- fin.get(name,10);
- this->ui->label->setText(name);
-    fin.close();
+
+    //ifstream fin("library.txt");
+    //fin.seekg(0);
+  //  char name[10];
+ //QString check;
+ //fin.get(name,10);
+ //this->ui->label->setText(name);
+   // fin.close();
 
 
 }
