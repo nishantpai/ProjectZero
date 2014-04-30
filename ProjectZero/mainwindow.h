@@ -26,6 +26,8 @@ public:
 
         void on_addManuallyButton_clicked();
 
+        void on_searchButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

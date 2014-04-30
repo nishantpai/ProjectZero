@@ -4,6 +4,7 @@
 class Book
 {
 public:
+    long long index;
     QString name, author;
     int quantity;
 

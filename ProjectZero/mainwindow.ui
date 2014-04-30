@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="addFromFileButton">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>40</y>
+      <x>530</x>
+      <y>10</y>
       <width>81</width>
       <height>23</height>
      </rect>
@@ -30,7 +30,7 @@
    <widget class="QPushButton" name="displayLibraryButton">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>530</x>
       <y>40</y>
       <width>91</width>
       <height>23</height>
@@ -43,8 +43,8 @@
    <widget class="QTableWidget" name="displayBooks">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>80</y>
+      <x>40</x>
+      <y>120</y>
       <width>341</width>
       <height>311</height>
      </rect>
@@ -52,6 +52,11 @@
     <property name="sortingEnabled">
      <bool>true</bool>
     </property>
+    <column>
+     <property name="text">
+      <string>INDEX</string>
+     </property>
+    </column>
     <column>
      <property name="text">
       <string>NAME</string>
@@ -123,6 +128,29 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QLineEdit" name="searchEdit">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>40</y>
+      <width>231</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="searchButton">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>40</y>
+      <width>121</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Search By Name</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

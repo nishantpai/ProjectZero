@@ -62,15 +62,20 @@ void MainWindow::on_displayLibraryButton_clicked()
 
             switch(j)                                       // sets appropriate attribute to cell aka item
             {
+
             case 0:
-                currentCell->setText( currentBook->name );
+                currentCell->setText( QString::number( currentBook->index ) );
                 break;
             case 1:
-                currentCell->setText( currentBook->author );
+                currentCell->setText( currentBook->name );
                 break;
             case 2:
+                currentCell->setText( currentBook->author );
+                break;
+            case 3:
                 currentCell->setText( QString::number(currentBook->quantity ) );
                 break;
+
             }
 
             ui->displayBooks->setItem(i, j, currentCell );  // sets cell aka item to appropriate row and column
@@ -81,3 +86,47 @@ void MainWindow::on_displayLibraryButton_clicked()
 }
 
 
+
+void MainWindow::on_searchButton_clicked()
+{
+    QString searchQuery = ui->searchEdit->text();
+
+    Book* currentBook = myLibrary.header;                   // a book object iterator
+    ui->displayBooks->setRowCount(5+myLibrary.bookCount);   // sets the number of rows to be displayed (+5)
+
+    for(int i=0; i< myLibrary.bookCount; i++ )              // iterates over number of books
+    {
+        //if( strstr( currentBook->name , searchQuery ) == 0 )
+        {
+            for( int j=0; j< myLibrary.attributes ; j++  )      // iterates over number of attributes
+            {
+
+                QTableWidgetItem* currentCell;                  // creates a new cell aka item
+                currentCell = new QTableWidgetItem;
+
+                switch(j)                                       // sets appropriate attribute to cell aka item
+                {
+                case 0:
+                    currentCell->setText( QString::number( currentBook->index ) );
+                case 1:
+                    currentCell->setText( currentBook->name );
+                    break;
+                case 2:
+                    currentCell->setText( currentBook->author );
+                    break;
+                case 3:
+                    currentCell->setText( QString::number(currentBook->quantity ) );
+                    break;
+                }
+
+                ui->displayBooks->setItem(i, j, currentCell );  // sets cell aka item to appropriate row and column
+            }
+        }
+
+        currentBook = currentBook->next;                    // points to next book in library
+    }
+
+
+
+
+}

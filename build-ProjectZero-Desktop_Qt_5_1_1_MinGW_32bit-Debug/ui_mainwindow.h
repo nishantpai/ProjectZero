@@ -44,6 +44,8 @@ public:
     QLineEdit *quantityEdit;
     QPushButton *addManuallyButton;
     QLabel *label_2;
+    QLineEdit *searchEdit;
+    QPushButton *searchButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -57,21 +59,23 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         addFromFileButton = new QPushButton(centralWidget);
         addFromFileButton->setObjectName(QStringLiteral("addFromFileButton"));
-        addFromFileButton->setGeometry(QRect(50, 40, 81, 23));
+        addFromFileButton->setGeometry(QRect(530, 10, 81, 23));
         displayLibraryButton = new QPushButton(centralWidget);
         displayLibraryButton->setObjectName(QStringLiteral("displayLibraryButton"));
-        displayLibraryButton->setGeometry(QRect(160, 40, 91, 23));
+        displayLibraryButton->setGeometry(QRect(530, 40, 91, 23));
         displayBooks = new QTableWidget(centralWidget);
-        if (displayBooks->columnCount() < 3)
-            displayBooks->setColumnCount(3);
+        if (displayBooks->columnCount() < 4)
+            displayBooks->setColumnCount(4);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         displayBooks->setHorizontalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
         displayBooks->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
         displayBooks->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        displayBooks->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         displayBooks->setObjectName(QStringLiteral("displayBooks"));
-        displayBooks->setGeometry(QRect(30, 80, 341, 311));
+        displayBooks->setGeometry(QRect(40, 120, 341, 311));
         displayBooks->setSortingEnabled(true);
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
@@ -121,6 +125,12 @@ public:
 
         formLayout->setWidget(1, QFormLayout::SpanningRole, label_2);
 
+        searchEdit = new QLineEdit(centralWidget);
+        searchEdit->setObjectName(QStringLiteral("searchEdit"));
+        searchEdit->setGeometry(QRect(40, 40, 231, 20));
+        searchButton = new QPushButton(centralWidget);
+        searchButton->setObjectName(QStringLiteral("searchButton"));
+        searchButton->setGeometry(QRect(290, 40, 121, 23));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -144,16 +154,19 @@ public:
         addFromFileButton->setText(QApplication::translate("MainWindow", "Add From File", 0));
         displayLibraryButton->setText(QApplication::translate("MainWindow", "Display Library", 0));
         QTableWidgetItem *___qtablewidgetitem = displayBooks->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "NAME", 0));
+        ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "INDEX", 0));
         QTableWidgetItem *___qtablewidgetitem1 = displayBooks->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("MainWindow", "AUTHOR", 0));
+        ___qtablewidgetitem1->setText(QApplication::translate("MainWindow", "NAME", 0));
         QTableWidgetItem *___qtablewidgetitem2 = displayBooks->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("MainWindow", "QUANTITY", 0));
+        ___qtablewidgetitem2->setText(QApplication::translate("MainWindow", "AUTHOR", 0));
+        QTableWidgetItem *___qtablewidgetitem3 = displayBooks->horizontalHeaderItem(3);
+        ___qtablewidgetitem3->setText(QApplication::translate("MainWindow", "QUANTITY", 0));
         label->setText(QApplication::translate("MainWindow", "Name:", 0));
         label_3->setText(QApplication::translate("MainWindow", "Author:", 0));
         label_4->setText(QApplication::translate("MainWindow", "Quantity: ", 0));
         addManuallyButton->setText(QApplication::translate("MainWindow", "Add Manually", 0));
         label_2->setText(QApplication::translate("MainWindow", "ADD BOOKS MANUALLY:", 0));
+        searchButton->setText(QApplication::translate("MainWindow", "Search By Name", 0));
     } // retranslateUi
 
 };

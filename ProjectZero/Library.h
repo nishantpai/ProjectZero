@@ -13,13 +13,29 @@ public:
     Book * lastBook;
     int bookCount;
     int attributes;     // Number of properties of a book (name, author, quantity) (Will increase in future)
+    vector <long> deadIndexes;  // Stores deleted book's indexes for reuse
 
     Library()
     {
         header = NULL;
         lastBook = NULL;
         bookCount = 0;
-        attributes = 3;
+        attributes = 4;
+    }
+
+    // assigns a new index
+    long assignIndex()
+    {
+        long newIndex;
+        //checks dead indexes
+        if( deadIndexes.size()!=0 )
+        {
+            newIndex = deadIndexes.back();
+            deadIndexes.pop_back();
+        }
+        else
+            newIndex = bookCount;
+        return newIndex;
     }
 
     void addFromFile(QString PCaddress)
@@ -53,6 +69,7 @@ public:
                     }
                     currentAttribute++;
                     bookCount++;
+                    newBook->index = assignIndex();
                 }
 
                 if( currentAttribute == 1 )             // stores name
@@ -98,6 +115,8 @@ public:
             lastBook->next = newBook;
             lastBook = newBook;
         }
+
+        newBook->index = assignIndex();
     }
 
 };
