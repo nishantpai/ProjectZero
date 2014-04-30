@@ -8,7 +8,9 @@ public:
     long long index;
     QString name, author;
     int quantity;
-    std::vector <Copy> copies;
+
+    Copy * copies[100]; //hard coded. Bad!
+    int copyCount;
 
     Book * next;
 
@@ -16,6 +18,16 @@ public:
     {
         next = NULL;
         quantity = 0;
+        copyCount = 0;
+    }
+
+    void generateCopy(int id, int taken)
+    {
+        Copy * newCopy;
+        newCopy = new Copy;
+        newCopy->id = id;
+        newCopy->taken = taken;
+        copies[ copyCount++ ] = newCopy;
     }
 
 };

@@ -31,7 +31,7 @@ Library myLibrary;
 void MainWindow::on_addFromFileButton_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),"",tr(".txt"));
-    myLibrary.addFromFile(fileName);
+    myLibrary.addFromFile( fileName );
 }
 
 // adds book from manual input
@@ -40,8 +40,7 @@ void MainWindow::on_addManuallyButton_clicked()
     Book* newBook = new Book;
     newBook->name = ui->nameEdit->text();
     newBook->author = ui->authorEdit->text();
-    newBook->quantity = ui->quantityEdit->text().toInt();
-
+    newBook->quantity = ui->quantityEdit->text().toInt();    
     myLibrary.addBookManually(newBook);
 }
 
@@ -134,4 +133,9 @@ void MainWindow::on_searchButton_clicked()
 
 
 
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    myLibrary.exportToFile();
 }

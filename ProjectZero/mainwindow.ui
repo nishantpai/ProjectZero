@@ -6,47 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>651</width>
-    <height>490</height>
+    <width>929</width>
+    <height>576</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="addFromFileButton">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>10</y>
-      <width>81</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add From File</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="displayLibraryButton">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>40</y>
-      <width>91</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Display Library</string>
-    </property>
-   </widget>
    <widget class="QTableWidget" name="displayBooks">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>120</y>
-      <width>341</width>
-      <height>311</height>
+      <x>350</x>
+      <y>80</y>
+      <width>541</width>
+      <height>431</height>
      </rect>
     </property>
     <property name="sortingEnabled">
@@ -76,54 +50,57 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>150</y>
-      <width>190</width>
-      <height>128</height>
+      <x>50</x>
+      <y>210</y>
+      <width>256</width>
+      <height>134</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+     </property>
      <item row="2" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>ADD BOOKS MANUALLY:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
         <string>Name:</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
+     <item row="3" column="1">
       <widget class="QLineEdit" name="nameEdit"/>
      </item>
-     <item row="3" column="0">
+     <item row="4" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
         <string>Author:</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="4" column="1">
       <widget class="QLineEdit" name="authorEdit"/>
      </item>
-     <item row="4" column="0">
+     <item row="5" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
         <string>Quantity: </string>
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
+     <item row="5" column="1">
       <widget class="QLineEdit" name="quantityEdit"/>
      </item>
-     <item row="5" column="0" colspan="2">
+     <item row="6" column="0" colspan="2">
       <widget class="QPushButton" name="addManuallyButton">
        <property name="text">
         <string>Add Manually</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0" colspan="2">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>ADD BOOKS MANUALLY:</string>
        </property>
       </widget>
      </item>
@@ -132,8 +109,8 @@
    <widget class="QLineEdit" name="searchEdit">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>40</y>
+      <x>360</x>
+      <y>30</y>
       <width>231</width>
       <height>20</height>
      </rect>
@@ -142,8 +119,8 @@
    <widget class="QPushButton" name="searchButton">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>40</y>
+      <x>630</x>
+      <y>30</y>
       <width>121</width>
       <height>23</height>
      </rect>
@@ -152,13 +129,52 @@
      <string>Search By Name</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>390</y>
+      <width>131</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Export To File</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>140</y>
+      <width>131</width>
+      <height>54</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="addFromFileButton">
+       <property name="text">
+        <string>Add From File...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="displayLibraryButton">
+       <property name="text">
+        <string>Display Library</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>651</width>
+     <width>929</width>
      <height>21</height>
     </rect>
    </property>

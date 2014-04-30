@@ -4,6 +4,8 @@
 #include "QFile"
 #include "QTextStream"
 #include <iostream>
+#include "Copy.h"
+
 using namespace std;
 
 class Library
@@ -13,7 +15,6 @@ public:
     Book * lastBook;
     int bookCount;
     int attributes;     // Number of properties of a book (name, author, quantity) (Will increase in future)
-    vector <long> deadIndexes;  // Stores deleted book's indexes for reuse
 
     Library()
     {
@@ -23,20 +24,49 @@ public:
         attributes = 4;
     }
 
-    // assigns a new index
-    long assignIndex()
+    void exportToFile()
     {
-        long newIndex;
-        //checks dead indexes
-        if( deadIndexes.size()!=0 )
+        QFile outFile("Resources/newDatabase.txt");
+        if( outFile.open(QIODevice::WriteOnly | QIODevice::Text) )
         {
-            newIndex = deadIndexes.back();
-            deadIndexes.pop_back();
+            QTextStream out (&outFile);
+
+            Book * currentBook;
+            currentBook = header;
+
+            for( int booksExported = 0; booksExported<bookCount; booksExported++ )
+            {
+                // print index
+                out << currentBook->index << endl;
+
+                // print name
+                out << currentBook->name << endl;
+
+                // print author
+                out << currentBook->author << endl;
+
+                // print quantity
+                out << currentBook->quantity << endl;
+
+                // print copy ID's and statuses
+                for( int currentCopy=0; currentCopy < currentBook->quantity; currentCopy++ )
+                {
+                    // print ID
+                    out << currentBook->copies[ currentCopy ]->id << endl;
+                    // print status
+                    out << currentBook->copies[ currentCopy ]->taken << endl;
+                }
+
+                currentBook = currentBook->next;
+            }
+
+            outFile.close();
+
         }
         else
-            newIndex = bookCount;
-        return newIndex;
+            cout << "Unable to open file";
     }
+
 
     void addFromFile(QString PCaddress)
     {
@@ -54,6 +84,23 @@ public:
             while ( !in.atEnd() )
             {
 
+                if( currentAttribute == 5 )
+                {
+
+                    for( int i=0; i< (newBook->quantity); i++ )
+                    {
+                        int copyID = in.readLine().toInt();
+                        int copyIDstatus = in.readLine().toInt();
+
+                        newBook->generateCopy( copyID, copyIDstatus );
+                    }
+
+                    currentAttribute = 0;
+                    if( in.atEnd() )
+                        break;
+
+                }
+
                 QString currentLine = in.readLine();    // reads one line at a time
 
                 if( currentAttribute == 0 )             // Creates a new Book object
@@ -69,25 +116,29 @@ public:
                     }
                     currentAttribute++;
                     bookCount++;
-                    newBook->index = assignIndex();
                 }
 
-                if( currentAttribute == 1 )             // stores name
+                if( currentAttribute == 1 )             // stores index
+                {
+                    newBook->index = ( currentLine.toLongLong() );
+                }
+
+                else if( currentAttribute == 2 )        // stores name
                 {
                     newBook->name.clear();
                     newBook->name.append( currentLine );
                 }
 
-                else if( currentAttribute == 2 )        // stores author
+                else if( currentAttribute == 3 )        // stores author
                 {
                     newBook->author.clear();
                     newBook->author.append( currentLine );
                 }
 
-                else                                    // stores quantity
+                else if( currentAttribute == 4 )        // stores quantity
                 {
                     newBook->quantity = currentLine.toInt();
-                    currentAttribute = -1;
+
                 }
 
                 currentAttribute++;                     // iterates attributes
@@ -104,19 +155,28 @@ public:
     }
 
 
-    // All this functions does is add bookCount and change value of lastBook pointer.
+
     void addBookManually(Book * newBook)
     {
         bookCount++;
+
         if(header == NULL)
+        {
             header = lastBook = newBook;
+            newBook->index = 1;
+        }
         else
         {
+            newBook->index  = (lastBook->index) + 1;
             lastBook->next = newBook;
             lastBook = newBook;
         }
 
-        newBook->index = assignIndex();
+        for( int i=0; i<newBook->quantity; i++ )
+        {
+            newBook->generateCopy( i+1, 0 );
+        }
+
     }
 
 };
