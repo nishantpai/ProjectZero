@@ -72,6 +72,7 @@ public:
         displayBooks->setHorizontalHeaderItem(2, __qtablewidgetitem2);
         displayBooks->setObjectName(QStringLiteral("displayBooks"));
         displayBooks->setGeometry(QRect(30, 80, 341, 311));
+        displayBooks->setSortingEnabled(true);
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
         layoutWidget->setGeometry(QRect(410, 150, 190, 128));
