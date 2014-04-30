@@ -17,6 +17,7 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     Library.h \
-    Book.h
+    Book.h \
+    Copy.h
 
 FORMS    += mainwindow.ui
