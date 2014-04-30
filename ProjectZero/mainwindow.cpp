@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->displayBooks->setColumnCount(5);
+    ui->displayBooks->setColumnCount(5);    //sets columns and rows
     ui->displayBooks->setRowCount(5);
 
 }
@@ -27,12 +27,14 @@ MainWindow::~MainWindow()
 Library myLibrary;
 
 
+// adds from a file location in hard drive
 void MainWindow::on_addFromFileButton_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),"",tr(".txt"));
     myLibrary.addFromFile(fileName);
 }
 
+// adds book from manual input
 void MainWindow::on_addManuallyButton_clicked()
 {
     Book* newBook = new Book;
@@ -43,21 +45,22 @@ void MainWindow::on_addManuallyButton_clicked()
     myLibrary.addBookManually(newBook);
 }
 
+// displays all files in database.
 void MainWindow::on_displayLibraryButton_clicked()
 {
 
-    Book* currentBook = myLibrary.header;
-    ui->displayBooks->setRowCount(5+myLibrary.bookCount);
+    Book* currentBook = myLibrary.header;                   // a book object iterator
+    ui->displayBooks->setRowCount(5+myLibrary.bookCount);   // sets the number of rows to be displayed (+5)
 
-    for(int i=0; i< myLibrary.bookCount; i++ )
+    for(int i=0; i< myLibrary.bookCount; i++ )              // iterates over number of books
     {
-        for( int j=0; j< myLibrary.attributes ; j++  )
+        for( int j=0; j< myLibrary.attributes ; j++  )      // iterates over number of attributes
         {
 
-            QTableWidgetItem* currentCell;
+            QTableWidgetItem* currentCell;                  // creates a new cell aka item
             currentCell = new QTableWidgetItem;
 
-            switch(j)
+            switch(j)                                       // sets appropriate attribute to cell aka item
             {
             case 0:
                 currentCell->setText( currentBook->name );
@@ -70,10 +73,10 @@ void MainWindow::on_displayLibraryButton_clicked()
                 break;
             }
 
-            ui->displayBooks->setItem(i, j, currentCell );
+            ui->displayBooks->setItem(i, j, currentCell );  // sets cell aka item to appropriate row and column
         }
 
-        currentBook = currentBook->next;
+        currentBook = currentBook->next;                    // points to next book in library
     }
 }
 
