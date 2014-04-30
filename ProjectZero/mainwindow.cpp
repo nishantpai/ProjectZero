@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "Library.h"
 #include "ui_mainwindow.h"
+#include <QFileDialog>
 
 #include<iostream>
 using namespace std;
@@ -28,7 +29,8 @@ Library myLibrary;
 
 void MainWindow::on_addFromFileButton_clicked()
 {
-    myLibrary.addFromFile("Resources/Database.txt");
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),"",tr(".txt"));
+    myLibrary.addFromFile(fileName);
 }
 
 void MainWindow::on_addManuallyButton_clicked()
