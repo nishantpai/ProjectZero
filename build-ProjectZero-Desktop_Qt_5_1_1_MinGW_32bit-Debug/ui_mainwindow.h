@@ -43,13 +43,19 @@ public:
     QLabel *label_4;
     QLineEdit *quantityEdit;
     QPushButton *addManuallyButton;
-    QLineEdit *searchEdit;
-    QPushButton *searchButton;
     QPushButton *pushButton;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
     QPushButton *addFromFileButton;
-    QPushButton *displayLibraryButton;
+    QLabel *label_5;
+    QLabel *label_6;
+    QLabel *label_7;
+    QLineEdit *searchByAuthorEdit;
+    QLineEdit *searchByIndexEdit;
+    QLineEdit *searchByNameEdit;
+    QPushButton *pushButton_2;
+    QLabel *label_8;
+    QLabel *statsLabel;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -58,7 +64,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(929, 576);
+        MainWindow->resize(979, 634);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         displayBooks = new QTableWidget(centralWidget);
@@ -73,7 +79,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
         displayBooks->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         displayBooks->setObjectName(QStringLiteral("displayBooks"));
-        displayBooks->setGeometry(QRect(350, 80, 541, 431));
+        displayBooks->setGeometry(QRect(380, 80, 521, 451));
         displayBooks->setSortingEnabled(true);
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
@@ -124,37 +130,53 @@ public:
 
         formLayout->setWidget(6, QFormLayout::SpanningRole, addManuallyButton);
 
-        searchEdit = new QLineEdit(centralWidget);
-        searchEdit->setObjectName(QStringLiteral("searchEdit"));
-        searchEdit->setGeometry(QRect(360, 30, 231, 20));
-        searchButton = new QPushButton(centralWidget);
-        searchButton->setObjectName(QStringLiteral("searchButton"));
-        searchButton->setGeometry(QRect(630, 30, 121, 23));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(110, 390, 131, 23));
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(50, 140, 131, 54));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget1 = new QWidget(centralWidget);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(50, 140, 131, 54));
+        verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        addFromFileButton = new QPushButton(widget);
+        addFromFileButton = new QPushButton(layoutWidget1);
         addFromFileButton->setObjectName(QStringLiteral("addFromFileButton"));
 
         verticalLayout->addWidget(addFromFileButton);
 
-        displayLibraryButton = new QPushButton(widget);
-        displayLibraryButton->setObjectName(QStringLiteral("displayLibraryButton"));
-
-        verticalLayout->addWidget(displayLibraryButton);
-
+        label_5 = new QLabel(centralWidget);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setGeometry(QRect(20, 10, 91, 16));
+        label_6 = new QLabel(centralWidget);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setGeometry(QRect(20, 40, 101, 16));
+        label_7 = new QLabel(centralWidget);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(20, 70, 91, 16));
+        searchByAuthorEdit = new QLineEdit(centralWidget);
+        searchByAuthorEdit->setObjectName(QStringLiteral("searchByAuthorEdit"));
+        searchByAuthorEdit->setGeometry(QRect(120, 40, 231, 20));
+        searchByIndexEdit = new QLineEdit(centralWidget);
+        searchByIndexEdit->setObjectName(QStringLiteral("searchByIndexEdit"));
+        searchByIndexEdit->setGeometry(QRect(120, 70, 111, 20));
+        searchByNameEdit = new QLineEdit(centralWidget);
+        searchByNameEdit->setObjectName(QStringLiteral("searchByNameEdit"));
+        searchByNameEdit->setGeometry(QRect(120, 10, 291, 20));
+        pushButton_2 = new QPushButton(centralWidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setGeometry(QRect(220, 130, 75, 23));
+        label_8 = new QLabel(centralWidget);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setGeometry(QRect(380, 540, 41, 16));
+        statsLabel = new QLabel(centralWidget);
+        statsLabel->setObjectName(QStringLiteral("statsLabel"));
+        statsLabel->setGeometry(QRect(420, 540, 141, 16));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 929, 21));
+        menuBar->setGeometry(QRect(0, 0, 979, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -184,10 +206,14 @@ public:
         label_3->setText(QApplication::translate("MainWindow", "Author:", 0));
         label_4->setText(QApplication::translate("MainWindow", "Quantity: ", 0));
         addManuallyButton->setText(QApplication::translate("MainWindow", "Add Manually", 0));
-        searchButton->setText(QApplication::translate("MainWindow", "Search By Name", 0));
         pushButton->setText(QApplication::translate("MainWindow", "Export To File", 0));
         addFromFileButton->setText(QApplication::translate("MainWindow", "Add From File...", 0));
-        displayLibraryButton->setText(QApplication::translate("MainWindow", "Display Library", 0));
+        label_5->setText(QApplication::translate("MainWindow", "Search By NAME:", 0));
+        label_6->setText(QApplication::translate("MainWindow", "Search By AUTHOR:", 0));
+        label_7->setText(QApplication::translate("MainWindow", "Search By INDEX:", 0));
+        pushButton_2->setText(QApplication::translate("MainWindow", "Push", 0));
+        label_8->setText(QApplication::translate("MainWindow", "STATS: ", 0));
+        statsLabel->setText(QApplication::translate("MainWindow", "TextLabel", 0));
     } // retranslateUi
 
 };

@@ -30,6 +30,20 @@ public:
 
         void on_pushButton_clicked();
 
+        void on_searchEdit_textChanged(const QString &arg1);
+
+        void on_searchByNameEdit_textChanged(const QString &arg1);
+
+        void on_searchByAuthorEdit_textChanged(const QString &arg1);
+
+        void on_lineEdit_2_textChanged(const QString &arg1);
+
+        void on_searchByIndexEdit_textChanged(const QString &arg1);
+
+        void on_label_8_linkHovered(const QString &link);
+
+        void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
